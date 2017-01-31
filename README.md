@@ -1,6 +1,6 @@
 # APP Using Django and Angular js 2 
 
-
+Raiden Motion Developper 
 
 ## Project Setup
 ```python
