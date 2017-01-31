@@ -13,7 +13,7 @@ pip install -r requirements.txt
 
 
 #ngApp directory install NPM dependencies
-npm install
+npm installl
 #start npm
 npm start
 

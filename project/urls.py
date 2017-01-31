@@ -17,15 +17,21 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
-from core.views import SampleView, AngularApp, NgTemplateView
+from core.views import SampleView, AngularApp, NgTemplateView, RecordsView, RecordList
+from rest_framework.urlpatterns import format_suffix_patterns
+
 
 ngurls = [
     url(r'^$', SampleView.as_view(), name='sample'),
     url(r'^ng/$', NgTemplateView.as_view(), name='ngTemplate'),
+
 ]
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^sample/', include(ngurls)),
+    url(r'^list/', RecordList.as_view()),
+    url(r'^api/', RecordsView.as_view()),
     url(r'^(?!ng/).*$', AngularApp.as_view(), name="angular_app"),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ] + static(settings.ANGULAR_URL, document_root=settings.ANGULAR_ROOT)
